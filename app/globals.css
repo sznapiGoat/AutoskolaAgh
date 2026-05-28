@@ -25,6 +25,21 @@
   --foreground: #0D1423;
 }
 
+/* ── Typography reveal (overflow:hidden parent masks the slide) ── */
+@keyframes word-reveal {
+  from { transform: translateY(108%); }
+  to   { transform: translateY(0); }
+}
+
+/* ── Form step slide transitions ── */
+@keyframes step-in-right { from { opacity: 0; transform: translateX(52px);  } to { opacity: 1; transform: translateX(0); } }
+@keyframes step-in-left  { from { opacity: 0; transform: translateX(-52px); } to { opacity: 1; transform: translateX(0); } }
+.step-enter-right { animation: step-in-right 0.38s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.step-enter-left  { animation: step-in-left  0.38s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* ── Generic fade-up (for CTAs, sub-text) ── */
+@keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
 @keyframes scroll-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
 @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); }    }
 

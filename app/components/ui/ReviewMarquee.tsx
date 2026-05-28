@@ -68,17 +68,11 @@ export default function ReviewMarquee() {
           </h2>
         </div>
         {/* Rating badge */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.875rem", background: "#fff", border: "1px solid #E2E8F0", borderRadius: 12, padding: "0.875rem 1.25rem", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem", background: "#fff", border: "1px solid #E2E8F0", borderRadius: 12, padding: "0.875rem 1.25rem", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}>
+          <div style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif", fontWeight: 800, fontSize: "2.25rem", color: "#0D1423", lineHeight: 1 }}>4.2</div>
           <div>
-            <div style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif", fontWeight: 800, fontSize: "2rem", color: "#0D1423", lineHeight: 1 }}>4.2</div>
             <Stars n={4} />
-            <div style={{ fontSize: "0.72rem", color: "#94A3B8", marginTop: "0.25rem" }}>28 recenzí</div>
-          </div>
-          <div style={{ width: 1, height: 48, background: "#E2E8F0" }} />
-          <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "1.5rem" }}>🥇</div>
-            <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#D97706", whiteSpace: "nowrap" }}>Zlatá firma</div>
-            <div style={{ fontSize: "0.65rem", color: "#94A3B8" }}>2024–2026</div>
+            <div style={{ fontSize: "0.75rem", color: "#94A3B8", marginTop: "0.375rem" }}>28 recenzí · Google</div>
           </div>
         </div>
       </div>

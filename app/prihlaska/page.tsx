@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -158,6 +158,8 @@ function SuccessScreen() {
 
 export default function Prihlaska() {
   const [step, setStep] = useState(0);
+  const [dir, setDir] = useState<"forward" | "backward">("forward");
+  const [stepKey, setStepKey] = useState("step-0-forward");
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState<FormData>({ categories: [], name: "", phone: "", email: "", note: "", consent: false });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
@@ -187,7 +189,17 @@ export default function Prihlaska() {
     if (step === 0 && !validate1()) return;
     if (step === 1 && !validate2()) return;
     setErrors({});
-    setStep((s) => s + 1);
+    const ns = step + 1;
+    setDir("forward");
+    setStep(ns);
+    setStepKey(`step-${ns}-forward-${Date.now()}`);
+  };
+
+  const back = () => {
+    const ns = step - 1;
+    setDir("backward");
+    setStep(ns);
+    setStepKey(`step-${ns}-backward-${Date.now()}`);
   };
 
   const submit = () => {
@@ -217,6 +229,9 @@ export default function Prihlaska() {
           {submitted ? <SuccessScreen /> : (
             <>
               <ProgressBar step={step} />
+
+              {/* animated step wrapper — key triggers remount → CSS animation fires */}
+              <div key={stepKey} className={dir === "forward" ? "step-enter-right" : "step-enter-left"} style={{ overflow: "hidden" }}>
 
               {/* ── STEP 0: Category ── */}
               {step === 0 && (
@@ -323,17 +338,19 @@ export default function Prihlaska() {
                 </div>
               )}
 
+              </div>{/* end animated step wrapper */}
+
               {/* Navigation buttons */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "0.5rem" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "1.5rem", paddingTop: "1.25rem", borderTop: "1px solid #F1F5F9" }}>
                 {step > 0
-                  ? <button onClick={() => setStep((s) => s - 1)} style={{ background: "none", border: "1.5px solid #E2E8F0", borderRadius: 8, padding: "0.75rem 1.5rem", fontWeight: 700, fontSize: "0.9rem", color: "#475569", cursor: "pointer" }}>← Zpět</button>
+                  ? <button onClick={back} style={{ background: "none", border: "1.5px solid #E2E8F0", borderRadius: 8, padding: "0.75rem 1.5rem", fontWeight: 700, fontSize: "0.9rem", color: "#475569", cursor: "pointer" }}>← Zpět</button>
                   : <div />
                 }
                 {step < 2
-                  ? <button onClick={next} style={{ background: "#1A5FBF", border: "none", borderRadius: 8, padding: "0.875rem 2rem", fontWeight: 800, fontSize: "0.95rem", color: "#fff", cursor: "pointer", fontFamily: "var(--font-jakarta), system-ui, sans-serif" }}>
+                  ? <button onClick={next} style={{ background: "#F59E0B", border: "none", borderRadius: 8, padding: "0.875rem 2rem", fontWeight: 800, fontSize: "0.95rem", color: "#0D1423", cursor: "pointer", fontFamily: "var(--font-jakarta), system-ui, sans-serif", boxShadow: "0 4px 16px rgba(245,158,11,0.35)" }}>
                       Pokračovat →
                     </button>
-                  : <button onClick={submit} style={{ background: "#16A34A", border: "none", borderRadius: 8, padding: "0.875rem 2rem", fontWeight: 800, fontSize: "0.95rem", color: "#fff", cursor: "pointer", fontFamily: "var(--font-jakarta), system-ui, sans-serif" }}>
+                  : <button onClick={submit} style={{ background: "#F59E0B", border: "none", borderRadius: 8, padding: "0.875rem 2rem", fontWeight: 800, fontSize: "0.95rem", color: "#0D1423", cursor: "pointer", fontFamily: "var(--font-jakarta), system-ui, sans-serif", boxShadow: "0 4px 16px rgba(245,158,11,0.35)" }}>
                       Odeslat přihlášku ✓
                     </button>
                 }
