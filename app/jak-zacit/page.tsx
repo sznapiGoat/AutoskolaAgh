@@ -20,7 +20,7 @@ export default function JakZacit() {
             Jak začít krok za krokem
           </h1>
           <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1.1rem", lineHeight: 1.7, maxWidth: 560 }}>
-            Vše, co potřebujete vědět – od prvního telefonátu až po moment, kdy dostanete řidičský průkaz do ruky.
+            Od prvního telefonátu po moment, kdy dostanete řidičský průkaz do ruky.
           </p>
           {/* Quick stats */}
           <div style={{ display: "flex", gap: "2.5rem", marginTop: "2.5rem", flexWrap: "wrap" }}>
@@ -80,19 +80,15 @@ export default function JakZacit() {
                   {/* Step-specific callouts */}
                   {step.n === 1 && (
                     <div style={{ marginTop: "1.25rem", background: "#F0F4FB", border: "1px solid #BFDBFE", borderRadius: 10, padding: "1.25rem", display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
-                      <a href={`tel:${CONTACT.phoneRaw}`} style={{ display: "flex", alignItems: "center", gap: "0.625rem", color: "#1A5FBF", textDecoration: "none", fontWeight: 700, fontSize: "0.95rem" }}>
-                        <span style={{ fontSize: "1.25rem" }}>📞</span>{CONTACT.phone}
-                      </a>
-                      <a href={`mailto:${CONTACT.email}`} style={{ display: "flex", alignItems: "center", gap: "0.625rem", color: "#1A5FBF", textDecoration: "none", fontWeight: 700, fontSize: "0.95rem" }}>
-                        <span style={{ fontSize: "1.25rem" }}>✉️</span>{CONTACT.email}
-                      </a>
+                      <a href={`tel:${CONTACT.phoneRaw}`} style={{ color: "#1A5FBF", textDecoration: "none", fontWeight: 700, fontSize: "0.95rem" }}>{CONTACT.phone}</a>
+                      <a href={`mailto:${CONTACT.email}`} style={{ color: "#1A5FBF", textDecoration: "none", fontWeight: 700, fontSize: "0.95rem" }}>{CONTACT.email}</a>
                     </div>
                   )}
                   {step.n === 7 && (
                     <div style={{ marginTop: "1.25rem", background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 10, padding: "1.25rem" }}>
-                      <div style={{ fontWeight: 700, color: "#16A34A", marginBottom: "0.25rem", fontSize: "0.95rem" }}>🎉 Gratulujeme – jste řidič/ka!</div>
+                      <div style={{ fontWeight: 700, color: "#16A34A", marginBottom: "0.25rem", fontSize: "0.95rem" }}>Gratulujeme. Řidičský průkaz je váš.</div>
                       <p style={{ fontSize: "0.875rem", color: "#475569", margin: 0, lineHeight: 1.65 }}>
-                        Výcvik je za vámi. Pokud budete chtít v budoucnu rozšířit průkaz nebo absolvovat kondiční jízdy, jsme tu pro vás znovu.
+                        Výcvik je za vámi. Pokud budete chtít rozšířit průkaz nebo absolvovat kondiční jízdy, jsme tu pro vás i nadále.
                       </p>
                     </div>
                   )}
@@ -112,15 +108,15 @@ export default function JakZacit() {
               <h2 style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif", fontWeight: 800, fontSize: "clamp(1.5rem, 3vw, 2rem)", letterSpacing: "-0.025em", color: "#0D1423", marginBottom: "1.5rem" }}>Co budete potřebovat</h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                 {[
-                  { icon: "🪪", title: "Průkaz totožnosti", desc: "Občanský průkaz nebo cestovní pas." },
-                  { icon: "🏥", title: "Lékařský posudek", desc: "Vydá váš praktický lékař (objednejte se na prohlídku). Stačí sdělit, že potřebujete posudek pro autoškolu." },
-                  { icon: "📸", title: "Fotografie", desc: "2 fotografie průkazového formátu (stejné jako na OP)." },
-                  { icon: "💳", title: "Záloha na výcvik", desc: "Zálohu platíte při podpisu smlouvy. Zbytek lze rozložit do splátek – bez příplatku." },
+                  { title: "Průkaz totožnosti",  desc: "Občanský průkaz nebo cestovní pas." },
+                  { title: "Lékařský posudek",   desc: "Vydá váš praktický lékař. Stačí říct, že potřebujete posudek pro autoškolu." },
+                  { title: "Fotografie",          desc: "2 fotografie průkazového formátu (stejné jako na OP)." },
+                  { title: "Záloha na výcvik",    desc: "Záloha při podpisu smlouvy. Zbytek lze rozložit do splátek bez příplatku." },
                 ].map((item) => (
-                  <div key={item.title} style={{ display: "flex", gap: "1rem", padding: "1rem", background: "#fff", borderRadius: 10, border: "1px solid #E2E8F0" }}>
-                    <span style={{ fontSize: "1.5rem", flexShrink: 0 }}>{item.icon}</span>
+                  <div key={item.title} style={{ display: "flex", gap: "1rem", padding: "1rem 1.125rem", background: "#fff", borderRadius: 10, border: "1px solid #E2E8F0", alignItems: "flex-start" }}>
+                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#1A5FBF", flexShrink: 0, marginTop: 7 }} />
                     <div>
-                      <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "#0D1423", marginBottom: "0.25rem" }}>{item.title}</div>
+                      <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "#0D1423", marginBottom: "0.2rem" }}>{item.title}</div>
                       <p style={{ fontSize: "0.875rem", color: "#475569", lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
                     </div>
                   </div>
@@ -160,11 +156,8 @@ export default function JakZacit() {
           <div style={{ display: "flex", flexDirection: "column", gap: "1px", background: "#E2E8F0", borderRadius: 12, overflow: "hidden" }}>
             {FAQ.map((item, i) => (
               <div key={i} style={{ background: "#fff", padding: "1.5rem" }}>
-                <div style={{ fontWeight: 700, fontSize: "1rem", color: "#0D1423", marginBottom: "0.625rem", display: "flex", gap: "0.75rem" }}>
-                  <span style={{ color: "#1A5FBF", flexShrink: 0 }}>Q</span>
-                  {item.q}
-                </div>
-                <p style={{ margin: 0, color: "#475569", fontSize: "0.925rem", lineHeight: 1.7, paddingLeft: "1.5rem" }}>{item.a}</p>
+                <div style={{ fontWeight: 700, fontSize: "0.975rem", color: "#0D1423", marginBottom: "0.5rem" }}>{item.q}</div>
+                <p style={{ margin: 0, color: "#475569", fontSize: "0.9rem", lineHeight: 1.72 }}>{item.a}</p>
               </div>
             ))}
           </div>
@@ -175,10 +168,10 @@ export default function JakZacit() {
       <section style={{ padding: "5rem 1.5rem", background: "#F0F4FB", textAlign: "center" }}>
         <div style={{ maxWidth: 560, margin: "0 auto" }}>
           <h2 style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif", fontWeight: 800, fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "#0D1423", marginBottom: "0.75rem" }}>Máte ještě otázky?</h2>
-          <p style={{ color: "#475569", lineHeight: 1.7, marginBottom: "2rem", fontSize: "1rem" }}>Zavolejte nám – rádi vše vysvětlíme a domluvíme termín vstupní schůzky bez jakýchkoliv závazků.</p>
+          <p style={{ color: "#475569", lineHeight: 1.7, marginBottom: "2rem", fontSize: "1rem" }}>Zavolejte. Rádi vše vysvětlíme a domluvíme termín vstupní schůzky.</p>
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href={`tel:${CONTACT.phoneRaw}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#1A5FBF", color: "#fff", padding: "0.875rem 1.75rem", borderRadius: 8, fontWeight: 700, textDecoration: "none", fontSize: "1rem" }}>
-              📞 {CONTACT.phone}
+            <a href={`tel:${CONTACT.phoneRaw}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#F59E0B", color: "#0D1423", padding: "0.875rem 1.75rem", borderRadius: 8, fontWeight: 800, textDecoration: "none", fontSize: "1rem" }}>
+              {CONTACT.phone}
             </a>
             <Link href="/kontakt" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", border: "1.5px solid #1A5FBF", color: "#1A5FBF", padding: "0.875rem 1.75rem", borderRadius: 8, fontWeight: 700, textDecoration: "none", fontSize: "1rem" }}>
               Kontaktní stránka →

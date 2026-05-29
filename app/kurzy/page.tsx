@@ -41,7 +41,7 @@ export default function Kurzy() {
               <span style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#1A5FBF", display: "block", marginBottom: "0.5rem" }}>Skupina A</span>
               <h2 style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif", fontWeight: 800, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", letterSpacing: "-0.025em", color: "#0D1423", marginBottom: "1rem" }}>Motocykly</h2>
               <p style={{ color: "#475569", fontSize: "1rem", lineHeight: 1.75 }}>
-                Výcvik pro všechny motocyklové skupiny – od malých motocyklů pro začátečníky až po plný průkaz bez omezení. Výuka probíhá na bezpečném cvičišti i v reálném silničním provozu.
+                Výcvik pro skupiny AM, A1, A2 a A. Od začátečníků po plný průkaz bez omezení. Výuka probíhá na bezpečném cvičišti i v reálném silničním provozu.
               </p>
             </div>
             {/* Photo grid */}
@@ -92,10 +92,10 @@ export default function Kurzy() {
               <span style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#1A5FBF", display: "block", marginBottom: "0.5rem" }}>Skupina B</span>
               <h2 style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif", fontWeight: 800, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", letterSpacing: "-0.025em", color: "#0D1423", marginBottom: "1rem" }}>Osobní automobil</h2>
               <p style={{ color: "#475569", fontSize: "1rem", lineHeight: 1.75, marginBottom: "1.5rem" }}>
-                Výuka v moderní <strong>Škodě Fabii</strong> s výraznými autoškola označeními. Výcvik zahrnuje jízdu na cvičišti, v obci i mimo obec – vše, co potřebujete pro bezpečnou jízdu v reálném provozu.
+                Výuka v moderní <strong>Škodě Fabii</strong> s autoškola označeními. Výcvik zahrnuje jízdu na cvičišti, v obci i mimo obec.
               </p>
               <p style={{ color: "#475569", fontSize: "1rem", lineHeight: 1.75, marginBottom: "2rem" }}>
-                Součástí výcviku je také nácvik technické obsluhy vozidla – kontrola oleje, pneumatik, výměna kola.
+                Součástí výcviku je i nácvik technické obsluhy vozidla: kontrola oleje, pneumatik, výměna kola.
               </p>
 
               {/* Car category cards */}
@@ -120,7 +120,7 @@ export default function Kurzy() {
       <section style={{ padding: "4rem 1.5rem", background: "#1A5FBF", textAlign: "center" }}>
         <div style={{ maxWidth: 560, margin: "0 auto" }}>
           <h2 style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif", fontWeight: 800, fontSize: "1.75rem", color: "#fff", marginBottom: "0.75rem" }}>Máte otázky ke kurzům?</h2>
-          <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "1.75rem", lineHeight: 1.7 }}>Zavolejte – odpovíme na vše a domluvíme termín vstupní schůzky.</p>
+          <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "1.75rem", lineHeight: 1.7 }}>Zavolejte. Odpovíme na vše a domluvíme termín schůzky.</p>
           <a href={`tel:${CONTACT.phoneRaw}`} style={{ display: "inline-block", background: "#fff", color: "#1A5FBF", padding: "0.875rem 2rem", borderRadius: 8, fontWeight: 800, textDecoration: "none", fontSize: "1rem" }}>{CONTACT.phone}</a>
         </div>
       </section>

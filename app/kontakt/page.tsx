@@ -23,7 +23,7 @@ export default function Kontakt() {
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "4rem 1.5rem 3rem" }}>
           <Link href="/" style={{ fontSize: "0.85rem", color: "#94A3B8", textDecoration: "none", marginBottom: "1rem", display: "inline-block" }}>← Zpět</Link>
           <h1 style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif", fontWeight: 800, fontSize: "clamp(2rem, 5vw, 3.5rem)", letterSpacing: "-0.03em", color: "#0D1423", marginBottom: "0.75rem" }}>Kontakt</h1>
-          <p style={{ color: "#475569", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 480, margin: 0 }}>Zavolejte nebo napište — domluvíme vstupní schůzku nebo zodpovíme vaše dotazy.</p>
+          <p style={{ color: "#475569", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 480, margin: 0 }}>Zavolejte nebo napište. Domluvíme termín a zodpovíme vaše dotazy.</p>
         </div>
       </div>
 

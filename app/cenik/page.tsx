@@ -5,7 +5,7 @@ import { CONTACT } from "../lib/data";
 export const metadata: Metadata = { title: "Ceník výcviku" };
 
 const PRICE_ITEMS = [
-  { code: "AM",  name: "Moped",               note: "Výcvik skupiny AM – mopedy do 45 km/h" },
+  { code: "AM",  name: "Moped",               note: "Mopedy a tříkolky do 45 km/h" },
   { code: "A1",  name: "Malý motocykl",        note: "Motocykly do 125 cm³ a 11 kW" },
   { code: "A2",  name: "Střední motocykl",     note: "Motocykly do 35 kW" },
   { code: "A",   name: "Motocykl bez omezení", note: "Plné oprávnění pro všechny motocykly" },
@@ -74,9 +74,9 @@ export default function Cenik() {
             <div>
               {/* Splátky callout */}
               <div style={{ background: "#EBF2FE", border: "1px solid #BFDBFE", borderRadius: 12, padding: "1.75rem", marginBottom: "1.25rem" }}>
-                <div style={{ fontWeight: 800, fontSize: "1rem", color: "#1A5FBF", marginBottom: "0.5rem" }}>💳 Splátky bez příplatku</div>
+                <div style={{ fontWeight: 800, fontSize: "1rem", color: "#1A5FBF", marginBottom: "0.5rem" }}>Splátky bez příplatku</div>
                 <p style={{ fontSize: "0.9rem", color: "#1E40AF", lineHeight: 1.7, margin: 0 }}>
-                  Cenu výcviku lze rozložit do splátek bez jakéhokoli navýšení. Podmínky domluvíme individuálně při vstupní schůzce – přizpůsobíme se vašim možnostem.
+                  Cenu výcviku lze rozložit do splátek bez jakéhokoli navýšení. Podmínky domluvíme individuálně. Přizpůsobíme se vašim možnostem.
                 </p>
               </div>
 
@@ -86,8 +86,8 @@ export default function Cenik() {
                 <p style={{ fontSize: "0.875rem", color: "#64748B", lineHeight: 1.65, marginBottom: "1.25rem" }}>
                   Rádi zodpovíme vše telefonicky nebo na vstupní schůzce. Žádné skryté poplatky.
                 </p>
-                <a href={`tel:${CONTACT.phoneRaw}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#1A5FBF", color: "#fff", padding: "0.75rem 1.5rem", borderRadius: 8, fontWeight: 700, textDecoration: "none", fontSize: "0.95rem" }}>
-                  📞 {CONTACT.phone}
+                <a href={`tel:${CONTACT.phoneRaw}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#F59E0B", color: "#0D1423", padding: "0.75rem 1.5rem", borderRadius: 8, fontWeight: 800, textDecoration: "none", fontSize: "0.95rem" }}>
+                  {CONTACT.phone}
                 </a>
               </div>
             </div>
@@ -99,13 +99,13 @@ export default function Cenik() {
       <section style={{ padding: "4rem 1.5rem", background: "#F8FAFB", borderTop: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem" }}>
           {[
-            { icon: "📋", title: "Opravná zkouška", desc: "V případě neúspěchu u zkoušky domluvíme opravný termín. Přezkoušení je možné." },
-            { icon: "⏸️", title: "Přerušení výcviku", desc: "Z vážných důvodů lze výcvik přerušit a pokračovat v pozdějším termínu." },
-            { icon: "🔄", title: "Kondiční jízdy", desc: "Po získání průkazu nabízíme kondiční jízdy pro zdokonalení dovedností." },
-            { icon: "🏅", title: "Obnova průkazu", desc: "Pomáháme také s obnovením oprávnění po ztrátě bodů nebo zákazu řízení." },
+            { title: "Opravná zkouška",  desc: "V případě neúspěchu u zkoušky domluvíme opravný termín. Přezkoušení je samozřejmě možné." },
+            { title: "Přerušení výcviku", desc: "Z vážných důvodů lze výcvik přerušit a pokračovat v pozdějším termínu." },
+            { title: "Kondiční jízdy",   desc: "Po získání průkazu nabízíme kondiční jízdy pro zdokonalení dovedností." },
+            { title: "Obnova průkazu",   desc: "Pomáháme také s obnovením oprávnění po ztrátě bodů nebo zákazu řízení." },
           ].map((item) => (
             <div key={item.title} style={{ background: "#fff", border: "1px solid #E2E8F0", borderRadius: 10, padding: "1.5rem" }}>
-              <div style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>{item.icon}</div>
+              <div style={{ width: 32, height: 3, background: "#1A5FBF", borderRadius: 2, marginBottom: "1rem" }} />
               <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "#0D1423", marginBottom: "0.375rem" }}>{item.title}</div>
               <p style={{ fontSize: "0.875rem", color: "#475569", lineHeight: 1.65, margin: 0 }}>{item.desc}</p>
             </div>

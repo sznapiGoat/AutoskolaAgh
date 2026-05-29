@@ -65,10 +65,10 @@ function RevealCard({ children, delay = 0, style }: { children: React.ReactNode;
 }
 
 const GATEWAY = [
-  { href: "/kurzy",     title: "Kurzy a kategorie",     desc: "AM, A1, A2, A, B, B+E – vše o skupinách a požadavcích.",   img: "/images/moto-action.jpg" },
-  { href: "/jak-zacit", title: "Jak začít krok za krokem", desc: "Detailní průvodce od prvního telefonátu po převzetí průkazu.", img: "/images/car-instructor.jpg" },
-  { href: "/cenik",     title: "Ceník výcviku",          desc: "Přehled cen, možnosti splátek a co je zahrnuto.",           img: "/images/moto-track.jpg" },
-  { href: "/kontakt",   title: "Kde nás najdete",        desc: "Adresa, telefon, e-mail a mapa – domluvte schůzku dnes.",   img: "/images/moto-street.jpg" },
+  { href: "/kurzy",     title: "Kurzy a kategorie",      desc: "AM, A1, A2, A, B, B+E. Skupiny, požadavky a vozidla.",     img: "/images/moto-action.jpg" },
+  { href: "/jak-zacit", title: "Jak začít krok za krokem", desc: "Od prvního telefonátu po převzetí průkazu. Vše srozumitelně.", img: "/images/car-instructor.jpg" },
+  { href: "/cenik",     title: "Ceník výcviku",          desc: "Přehled cen, možnosti splátek a co je zahrnuto v ceně.",     img: "/images/moto-track.jpg" },
+  { href: "/kontakt",   title: "Kde nás najdete",         desc: "Adresa, telefon, e-mail a mapa.",                           img: "/images/moto-street.jpg" },
 ];
 
 const HEADLINE_LINES = [
@@ -81,57 +81,58 @@ const HEADLINE_LINES = [
 export default function Home() {
   return (
     <>
-      {/* ── HERO — full-bleed ──────────────────────────────── */}
-      <section style={{ position: "relative", height: "100svh", minHeight: 640, display: "flex", alignItems: "center", overflow: "hidden" }}>
-        {/* Background photo */}
-        <Image src="/images/car-top.jpg" alt="Výcvikové vozidlo Autoškoly AGH" fill style={{ objectFit: "cover", objectPosition: "55% 50%" }} priority />
+      {/* ── HERO — split: dark panel left, photo right ─────── */}
+      <section style={{ minHeight: "100svh", display: "grid", gridTemplateColumns: "55fr 45fr" }}>
+        {/* Left: solid dark text panel */}
+        <div style={{
+          background: "#0B1C3E",
+          display: "flex",
+          alignItems: "center",
+          padding: "calc(64px + 4rem) 3rem 4rem 1.5rem",
+        }}>
+          <div style={{ maxWidth: 560, marginLeft: "auto", width: "100%" }}>
+            <h1 style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif", fontWeight: 800, fontSize: "clamp(2.5rem, 4.5vw, 4.75rem)", color: "#fff", lineHeight: 1.06, letterSpacing: "-0.035em", marginBottom: "1.5rem" }}>
+              {HEADLINE_LINES.map((l, i) => (
+                <div key={i} style={{ overflow: "hidden" }}>
+                  <span style={{ display: "block", animation: `word-reveal 0.75s cubic-bezier(0.16,1,0.3,1) ${l.delay}ms both` }}>
+                    {l.amber ? <span style={{ color: "#F59E0B" }}>{l.text}</span> : l.text}
+                  </span>
+                </div>
+              ))}
+            </h1>
 
-        {/* Dark gradient left→right */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(108deg, rgba(11,28,64,0.97) 0%, rgba(11,28,64,0.88) 42%, rgba(11,28,64,0.52) 65%, rgba(11,28,64,0.08) 100%)" }} />
+            <p style={{ color: "rgba(255,255,255,0.62)", fontSize: "1rem", lineHeight: 1.75, maxWidth: 440, marginBottom: "2.25rem", animation: "fade-up 0.6s ease 720ms both" }}>
+              Autoškola AGH v Mostě. Výcvik skupin AM, A1, A2, A, B a B+E. Individuální přístup, malé skupiny, splátky bez příplatku.
+            </p>
 
-        {/* Bottom fade for stats */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "38%", background: "linear-gradient(to top, rgba(11,28,64,0.9) 0%, transparent 100%)" }} />
+            <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", animation: "fade-up 0.6s ease 840ms both" }}>
+              <a href={`tel:${CONTACT.phoneRaw}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#F59E0B", color: "#0D1423", padding: "0.95rem 1.75rem", borderRadius: 8, fontWeight: 800, fontSize: "1rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(245,158,11,0.35)" }}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+                Zavolat
+              </a>
+              <Link href="/prihlaska" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", border: "1.5px solid rgba(255,255,255,0.3)", color: "rgba(255,255,255,0.85)", padding: "0.95rem 1.75rem", borderRadius: 8, fontWeight: 600, fontSize: "1rem", textDecoration: "none" }}>
+                Přihlásit se
+              </Link>
+            </div>
 
-        <div style={{ position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto", padding: "0 1.5rem", width: "100%" }}>
-          {/* Headline — each line wipes up through overflow:hidden mask */}
-          <h1 style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif", fontWeight: 800, fontSize: "clamp(2.75rem, 6vw, 5.5rem)", color: "#fff", lineHeight: 1.06, letterSpacing: "-0.035em", maxWidth: 740, marginBottom: "1.75rem" }}>
-            {HEADLINE_LINES.map((l, i) => (
-              <div key={i} style={{ overflow: "hidden" }}>
-                <span style={{ display: "block", animation: `word-reveal 0.75s cubic-bezier(0.16,1,0.3,1) ${l.delay}ms both` }}>
-                  {l.amber ? <span style={{ color: "#F59E0B" }}>{l.text}</span> : l.text}
-                </span>
-              </div>
-            ))}
-          </h1>
-
-          {/* Sub */}
-          <p style={{ color: "rgba(255,255,255,0.68)", fontSize: "1.1rem", lineHeight: 1.72, maxWidth: 500, marginBottom: "2.5rem", animation: "fade-up 0.6s ease 720ms both" }}>
-            Autoškola AGH v Mostě – výcvik skupin AM, A1, A2, A, B a&nbsp;B+E. Individuální přístup, malé skupiny, splátky bez příplatku.
-          </p>
-
-          {/* CTAs */}
-          <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", animation: "fade-up 0.6s ease 840ms both" }}>
-            <a href={`tel:${CONTACT.phoneRaw}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#F59E0B", color: "#0D1423", padding: "1rem 1.875rem", borderRadius: 8, fontWeight: 800, fontSize: "1.05rem", textDecoration: "none", boxShadow: "0 4px 20px rgba(245,158,11,0.4)" }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-              Zavolat
-            </a>
-            <Link href="/prihlaska" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", border: "1.5px solid rgba(255,255,255,0.35)", color: "#fff", padding: "1rem 1.875rem", borderRadius: 8, fontWeight: 700, fontSize: "1.05rem", textDecoration: "none" }}>
-              Přihlásit se →
-            </Link>
-          </div>
-
-          {/* Animated stats */}
-          <div style={{ display: "flex", gap: "3.5rem", marginTop: "5rem", paddingTop: "1.75rem", borderTop: "1px solid rgba(255,255,255,0.12)", flexWrap: "wrap" }}>
-            <AnimatedStat end={28}  label="Recenzí na Google" suffix="" />
-            <AnimatedStat end={4.2} label="Hodnocení"         suffix=" / 5" decimals={1} />
-            <AnimatedStat end={17}  label="Let zkušeností"    suffix="+" />
+            <div style={{ display: "flex", gap: "3rem", marginTop: "4rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.1)", animation: "fade-up 0.6s ease 1s both", flexWrap: "wrap" }}>
+              <AnimatedStat end={28}  label="Recenzí Google" suffix="" />
+              <AnimatedStat end={4.2} label="Hodnocení" suffix=" / 5" decimals={1} />
+              <AnimatedStat end={17}  label="Let zkušeností" suffix="+" />
+            </div>
           </div>
         </div>
 
-        {/* Scroll hint */}
-        <div style={{ position: "absolute", bottom: "2rem", right: "2rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem", color: "rgba(255,255,255,0.35)", animation: "fade-up 0.5s ease 1.4s both" }}>
-          <span style={{ fontSize: "0.62rem", letterSpacing: "0.12em", textTransform: "uppercase" }}>Scroll</span>
-          <div style={{ width: 1, height: 36, background: "linear-gradient(to bottom, rgba(255,255,255,0.35), transparent)" }} />
+        {/* Right: photo, no border, no card, bleeds to edge */}
+        <div style={{ position: "relative", overflow: "hidden" }}>
+          <Image
+            src="/images/car-top.jpg"
+            alt="Výcvikové vozidlo Autoškoly AGH"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center 45%" }}
+            priority
+            sizes="45vw"
+          />
         </div>
       </section>
 
@@ -223,7 +224,7 @@ export default function Home() {
             </Link>
           </RevealCard>
           <RevealCard delay={100} style={{ background: "#F8FAFB", border: "1px solid #E2E8F0", borderRadius: 16, padding: "2rem", pointerEvents: "none" }}>
-            <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1rem" }}>Přihláška — náhled</div>
+            <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1rem" }}>Přihláška</div>
             {["Jméno a příjmení", "Telefonní číslo", "E-mailová adresa"].map((l) => (
               <div key={l} style={{ border: "1.5px solid #E2E8F0", borderRadius: 8, padding: "0.875rem 1rem", marginBottom: "0.625rem", background: "#fff" }}>
                 <div style={{ fontSize: "0.7rem", color: "#94A3B8", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase" }}>{l}</div>

@@ -143,7 +143,7 @@ function SuccessScreen() {
         </svg>
       </div>
       <h2 style={{ fontFamily: "var(--font-jakarta), system-ui, sans-serif", fontWeight: 800, fontSize: "1.75rem", color: "#0D1423", marginBottom: "0.75rem" }}>
-        Přihláška přijata! 🎉
+        Přihláška odeslána
       </h2>
       <p style={{ color: "#475569", fontSize: "1rem", lineHeight: 1.7, maxWidth: 400, margin: "0 auto 2rem" }}>
         Děkujeme za zájem. Brzy se vám ozveme a domluvíme vstupní schůzku. Těšíme se na vás!
@@ -230,7 +230,7 @@ export default function Prihlaska() {
             <>
               <ProgressBar step={step} />
 
-              {/* animated step wrapper — key triggers remount → CSS animation fires */}
+              {/* step wrapper: key change forces remount, triggering CSS animation */}
               <div key={stepKey} className={dir === "forward" ? "step-enter-right" : "step-enter-left"} style={{ overflow: "hidden" }}>
 
               {/* ── STEP 0: Category ── */}
