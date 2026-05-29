@@ -2,8 +2,31 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { CONTACT } from "../../lib/data";
+
+/* Inline SVG — viewBox crops to AGH letters + gold bar only, no white bg */
+function LogoMark({ style }: { style?: React.CSSProperties }) {
+  return (
+    <svg
+      viewBox="215 355 575 248"
+      height="40"
+      style={{ display: "block", ...style }}
+      aria-label="AGH Autoškola"
+    >
+      {/* A */}
+      <path fill="#071236" d="M283.827 361.184C285.296 361.124 286.767 361.087 288.238 361.072L332.649 361.042C341.243 361.03 350.447 361.134 358.903 361.005C375.032 360.758 384.567 363.985 396.24 375.195C412.261 390.581 411.031 408.507 411.023 428.84L411.001 460.454L410.946 569.962L366.491 569.944C365.439 547.303 366.233 518.107 366.234 494.873C345.151 494.208 320.268 494.748 299.063 494.884L299.071 453.245L344.25 453.172L366.017 453.215L366.033 407.509L283.96 407.483L283.947 569.749L238.294 569.692L238.182 456.499L238.197 426.254C238.213 418.699 237.965 409.571 239.29 402.245C240.756 393.77 244.448 385.836 249.987 379.256C258.431 368.992 270.6 362.493 283.827 361.184Z"/>
+      {/* G */}
+      <path fill="#071236" d="M480.58 361.236L481.087 361.228C494.108 361.026 508.08 361.328 520.648 361.071C550.575 360.459 577.299 358.218 592.274 389.782C599.377 404.753 598.072 414.612 598.201 430.72C583.577 431.111 567.479 430.793 552.736 430.81L552.819 408.428C526.057 408.195 499.294 408.165 472.531 408.34L472.497 524.609L552.021 524.81L552.046 494.998L503.419 494.889L503.466 459.25L503.531 453.166L596.952 453.395C596.701 469.159 597.145 485.167 597.003 500.946C596.918 510.512 597.703 523.333 595.616 532.458C593.831 540.559 589.991 548.064 584.466 554.251C576.928 562.568 563.241 569.805 551.837 569.821C530.466 569.85 509.08 569.79 487.706 569.865C480.163 569.892 471.141 570.275 463.863 568.622C456.176 566.859 449.1 563.074 443.367 557.658C433.068 548.044 427.506 534.74 427.416 520.665C427.228 491.234 427.059 461.794 426.975 432.363C426.947 422.843 426.386 411.489 428.367 402.297C430.382 392.739 435.036 383.937 441.801 376.89C453.105 365.053 464.768 361.586 480.58 361.236Z"/>
+      {/* H left bar */}
+      <path fill="#071236" d="M613.817 361.23C628.683 361.134 643.55 361.128 658.416 361.211L658.409 503.621L658.41 549.201C658.394 553.819 658.68 565.347 658.177 569.152L657.375 569.759C642.909 570.063 627.701 569.87 613.173 569.916L613.329 414.083C613.33 408.513 612.843 363.926 613.817 361.23Z"/>
+      {/* H right bar + crossbar */}
+      <path fill="#071236" d="M740.833 361.089L786.5 361.184L786.477 569.708C771.413 569.921 755.914 569.738 740.815 569.742C740.91 562.118 740.853 554.384 740.863 546.75L740.693 494.797C719.506 494.136 694.853 494.741 673.401 494.714C673.022 481.125 673.168 466.906 673.177 453.302C695.725 453.11 718.273 453.101 740.82 453.275L740.833 361.089Z"/>
+      {/* Gold bar */}
+      <path fill="#E4B039" d="M238.275 588.568L786.338 588.742L786.26 594.881C767.471 593.841 741.293 594.704 721.978 594.716L603.325 594.642L238.425 594.941C238.307 592.913 238.316 590.621 238.275 588.568Z"/>
+    </svg>
+  );
+}
 
 const LINKS = [
   { href: "/kurzy",     label: "Kurzy" },
@@ -59,7 +82,7 @@ export default function Navbar() {
     }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 1.5rem", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
-        {/* Logo — pulses on click when already on homepage */}
+        {/* Logo */}
         <Link
           href="/"
           onClick={handleLogoClick}
@@ -67,21 +90,13 @@ export default function Navbar() {
             textDecoration: "none",
             display: "flex",
             alignItems: "center",
-            gap: "0.5rem",
-            fontFamily: "var(--font-jakarta), system-ui, sans-serif",
-            fontWeight: 800,
-            fontSize: "1.125rem",
-            letterSpacing: "-0.02em",
-            color: "#0D1423",
-            transform: logoPulse ? "scale(0.94)" : "scale(1)",
-            opacity:   logoPulse ? 0.7 : 1,
-            transition: "transform 0.15s ease, opacity 0.15s ease",
+            transform: logoPulse ? "scale(0.93)" : "scale(1)",
+            opacity:   logoPulse ? 0.65 : 1,
+            transition: "transform 0.18s cubic-bezier(0.34,1.56,0.64,1), opacity 0.18s ease",
             userSelect: "none",
           }}
         >
-          <span style={{ color: "#1A5FBF" }}>AGH</span>
-          <span style={{ color: "#CBD5E1", fontWeight: 300 }}>|</span>
-          <span>Autoškola</span>
+          <LogoMark />
         </Link>
 
         {/* Desktop nav — visibility via JS, not Tailwind, so inline styles don't conflict */}
