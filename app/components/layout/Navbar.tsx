@@ -41,7 +41,6 @@ export default function Navbar() {
   const [isMobile, setIsMobile]   = useState(false);
   const [logoPulse, setLogoPulse] = useState(false);
   const pathname = usePathname();
-  const router   = useRouter();
 
   // Scroll state
   useEffect(() => {
